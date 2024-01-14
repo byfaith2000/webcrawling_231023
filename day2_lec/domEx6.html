@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>domEx6</title>
+</head>
+<body>
+  <button id="button">button1</button><br/>
+  <button onclick="buttonClick()">button2</button><br/>
+  <button onclick="alert('click3');">button3</button>
+  <script>
+    function buttonClick(){
+      alert('buttonClick function call');
+    }
+    document.getElementById('button').onclick = function(){
+      this.textContent = this.textContent + '+';
+    }
+  </script>
+</body>
+</html>
