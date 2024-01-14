@@ -314,7 +314,8 @@ for item in bsObj.findAll('dutyname'):
 5째날
 
 
-
+24.1.14 일
+domEx2까지 완료
 
 
 
