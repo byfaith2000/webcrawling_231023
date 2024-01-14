@@ -1,0 +1,337 @@
+웹 크롤링
+
+첫 시간
+
+Python 3.9.6 기존 깔려 있으면 어떻게 되나요
+
+3.8.8이 가장 안정
+Download Windows installer(64-bit) <-깔면됨
+
+설치할 때 
+
+C:\Users\byfai>cd OneDrive\바탕 화면\PS1
+
+C:\Users\byfai\OneDrive\바탕 화면\PS1>python -m venv python_wc
+
+C:\Users\byfai\OneDrive\바탕 화면\PS1>
+
+
+
+☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+Lib. 설치시 주의사항
+관리자모드로 cmd창 열기 :
+윈도우+r  엔터 누른 후
+ctr + shift + enter 누르면 관리자 모드로 들어감
+
+
+C:\>cd users\byfai\OneDrive\바탕 화면\PS1
+
+C:\Users\byfai\OneDrive\바탕 화면\PS1>
+
+C:\Users\byfai\OneDrive\바탕 화면\PS1>python_wc\Scripts\activate.bat
+※ 안될 때는 cmd다 닫고 다시 실행해서 해 볼 것
+
+(python_wc) C:\Users\byfai\OneDrive\바탕 화면\PS1>pip install numpy pandas
+=>정상적으로 설치됨
+
+액세스가 거부되었습니다. 라고 뜨면 아래 참조..
+기존 cmd창 열려 있어서...->기존 창 닫으면 설치됨.
+☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+
+
+(python_wc) C:\Users\byfai\OneDrive\바탕 화면\PS1\python_wc\Scripts>pip install beautifulsoup4
+액세스가 거부되었습니다.
+
+(python_wc) C:\Users\byfai\OneDrive\바탕 화면\PS1\python_wc\Scripts>
+
+
+
+
+
+파이참 다운로드 싸이드
+https://www.jetbrains.com/pycharm/download/other.html
+
+2019.3 ~ 2023.1 버전 받으면 됨
+
+2022.2.4-Windows(exe) 다운로드 받으면 됨.
+
+
+
+파이참에서 뉴프로젝트 누르고
+
+Previously configured interpreter 오른쪽에 add interpreter 누름
+Add Python
+Existing 선택 후 오른쪽 path눌러
+새로 만든 PS1버전안에 Scripts안에 Python.exe를 선택한다. 
+
+디버그 실행
+
+터미널에서..아래 화살표 누르고 command prompt 선택하면 아래 줄 나옴
+(python_wc) C:\Users\byfai\PycharmProjects\pythonProject1>
+
+
+
+파이참>세팅스>Project: PythonProject1안에 Python Interpreter선택시 설치된 Lib.보임
+
+
+
+3일째
+get->query이다.
+post
+
+match는 맨 앞에만 찾음
+
+
+\d는 정수를 의미함
+
+\D는 정수를 제외하고,  대문자는 부정의 의미
+
+
+reEx3
+\s는 공백포함?
+\2sms 
+
+\w는 소대문자언더바까지 포함하는 문자열을 의미
+
+.+는 모든 문자 
+
+
+<a href="http://storage.googleapis.com/patents/grant_full_text/1980/pftaps19800513_wk20.zip">
+          ('http', '://storage.googleapis.com/patents/grant_full_text/2004/pg040629.', 'zip')
+
+
+
+ 
+＠＠domEx4.html  
+
+
+＠＠domEx4.html  
+^((?![A-Z]).)*$
+
+＠＠reEx3.py
+def mutiTen(m):
+    n = int(m.group(0))
+    return str(n*10)
+
+rstr3 = re.sub(r'[0-9]+', mutiTen, '32, function533 9082 fruit 7')
+print(rstr3)
+print()
+==> mutiTen함수 의미, 특히 n = int(m.group(0))
+
+＠＠reEx4.py
+#greedy
+fdata1 = re.findall(r'<b>.+</b>', '<b>blog</b>is a <b>website</b> containing a body')
+print(fdata1)
+
+#lazy
+fdata2 = re.findall(r'<b>.+?</b>', '<b>blog</b>is a <b>website</b> containing a body')
+print(fdata2)
+
+==>.+과 .+?의 의미... 점은 한개 글자인데..
+
+＠＠urlEx3.py
+file_name = re.findall(r'ipg.+zip', full_ulr)
+==> .+의 의미
+
+d
+＠＠
+encoding, decoding
+ms949
+charset=utf-8
+
+＠＠bsEx1.py
+import ssl
+context = ssl._create_unverified_context()
+====>http는 보안없고, https보안있다. 그래서 https에 정보요청할 때 보안때문에 가끔 응답이 없을 수 있는데
+ssl은 보안에 대해 회피? 하는 거
+
+＠＠bsEx6.py
+<html>
+idx = 0
+print('children attr 항목')
+for child in body.children:
+    idx += 1
+    print(str(idx) + '번째 요소 : ', child)
+print()
+
+(결과값)
+children attr 항목
+1번째 요소 :  
+
+2번째 요소 :  <p align="center" class="ptag white" id="apple">사과</p>
+3번째 요소 :  
+
+4번째 요소 :  <p align="center" class="ptag yellow">참외</p>
+5번째 요소 :  
+
+6번째 요소 :  <p align="center" class="ptag blue">블루베리</p>
+7번째 요소 :  
+
+8번째 요소 :  <div id="container">
+<p class="hard">과일</p>
+</div>
+9번째 요소 :  
+
+
+
+
+4째날
+
+https://en.wikipedia.org/wiki/Python_(programming_language)
+
+https://www.data.go.kr/
+
+요청주소 = pis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire
+endpoint = http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService
+
+인증키
+rNeWDwP1Ggejc8nmOceFcuzsws4zXp1xuYz6EjVr1rDL3K1leFEl0F6peTPxqkbYCHePiD138Xt9lkG9QUXYEA%3D%3D
+
+pip install lxml
+
+pip install requests
+
+
+http://www.krei.re.kr:18181/chart/main_chart/index/kind/S/sdate/1972-01-01/edate/2023-10-26
+
+
+
+
+셀레니움 설치
+pip install selenium
+
+
+크롬브라우저>점세개 > 도움말 > 크롬정보
+버전 118.0.5993.89(공식 빌드) (64비트)
+
+
+크롬 드라이브에서 아래 URL 다운로드 받음
+https://googlechromelabs.github.io/chrome-for-testing/#stable  <여기에서 아래 받음
+chromedriver의 win32의 URL받으면 됨 ※ 크롬 버전이 같아야 함.(118.0.5993까지 맞으면 됨)
+(아래)
+https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/118.0.5993.70/win32/chromedriver-win32.zip
+->주소창 실행하면 파일 자동다운로드됨
+->폴더 안에 있는 chromedriver.exe를 파이참 폴더에 붙여넣기 함.
+
+그러면 selenium 이용 가능??
+
+객체(ID, PW, 로그인버튼 등)를 받아 오는 방법(2가지)
+1. F12에서 id값을 가져오는 방법
+
+2. xpath 사용하는 방법
+F12> button에 오른단축키 > Copy > copy Xpath
+=> //*[@id="log.login"]
+
+
+로그인 안되는거 되도록 하는 법
+snEx3.py
+
+pip install pyperclip 설치  <=카피 기능이 있다.
+
+
+
+https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=be3db10c-b642-409c-81cc-c4cdecb5bd8b&temp=
+
+
+
+
+
+
+# 데이터 싸이트 회원 가입 후
+#pip install requests
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import quote_plus
+#인코딩 연관된 것
+
+endPoint = 'http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?'
+serviceKey = 'rNeWDwP1Ggejc8nmOceFcuzsws4zXp1xuYz6EjVr1rDL3K1leFEl0F6peTPxqkbYCHePiD138Xt9lkG9QUXYEA%3D%3D'
+
+Q0 = quote_plus('서울특별시')
+#print(Q0)
+Q1 = quote_plus('강남')
+QN = quote_plus('삼성약국')
+QT = 4
+ORD = 'NAME'
+pageNo = '1'
+numOfRows = '10'
+parameter = 'serviceKey='+serviceKey+'&Q0='+Q0+'&Q1='+Q1+'&QN='+QN+'&ORD='+ORD+'&pageNo='+pageNo+'&numOfRows='+numOfRows
+url = endPoint + parameter
+print(url)
+
+result = requests.get(url)
+print(result)
+
+bsObj = BeautifulSoup(result.content, 'lxml')
+print(bsObj)
+#
+for item in bsObj.findAll('dutyname'):
+    print(item.text)
+
+
+<html>
+<head></head>
+<body>
+	<div id="cartoon">
+		<h1>좋아하는 만화</h1>
+		<ul class="elements">
+			<li>피구왕 통키</li>
+			<li>미래 소년 코난</li>
+			<li>로보트 태권 브이</li>
+		</ul>
+	</div>
+	<!------------------------------------------------------->
+	<ul id="itemlist">
+		<li id="item1"><a href="hoge.html">피구왕 통키</a></li>
+		<li id="item2"><a href="https://www.naver.com">그랜다이저</a></li>
+		<li id="item3"><a href="https://www.daum.net">로보트 태권 V</a></li>
+		<li id="item4"><a href="http://www.google.com">들장미 소녀 캔디</a></li>
+		<li id="item5"><a href="http://www.abcd.com">똘이 장군</a></li>		
+	</ul>
+	<!------------------------------------------------------->
+	<div id="main-goods">
+		<h1>과일과 야채</h1>
+		<ul id="fruits">
+			<li>감</li>
+			<li>밤</li>
+			<li>대추</li>
+			<li>배</li>
+		</ul>
+		<ul id="vegatables">
+			<li>파프리카</li>
+			<li class="us">당근</li>
+			<li class="us">호박</li>
+			<li class="black" data-lo="us">양파</li>
+			<li class="cn" id="ko">가지</li>
+		</ul>
+	</div>
+</body>
+</html>
+
+
+
+5째날
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
